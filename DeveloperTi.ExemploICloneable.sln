@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTi.ExemploICloneable", "DeveloperTi.ExemploICloneable\DeveloperTi.ExemploICloneable.csproj", "{F001F728-CAA3-4128-AE6D-49EF92DE05F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperTi.ExemploMemberwiseClone", "DeveloperTi.ExemploMemberwiseClone\DeveloperTi.ExemploMemberwiseClone.csproj", "{1B9AB7CE-8B9A-46A3-8E2F-9FCDF6AF0FC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F001F728-CAA3-4128-AE6D-49EF92DE05F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F001F728-CAA3-4128-AE6D-49EF92DE05F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F001F728-CAA3-4128-AE6D-49EF92DE05F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B9AB7CE-8B9A-46A3-8E2F-9FCDF6AF0FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B9AB7CE-8B9A-46A3-8E2F-9FCDF6AF0FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B9AB7CE-8B9A-46A3-8E2F-9FCDF6AF0FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B9AB7CE-8B9A-46A3-8E2F-9FCDF6AF0FC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

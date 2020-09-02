@@ -6,33 +6,29 @@ namespace DeveloperTi.ExemploICloneable
     {
         public static void Main(string[] args)
         {
-            var livro1 = new Book
+            var livro1 = new Livro
             {
-                Author = "José de Deus",
-                Title = "Vai com Jeová",
-                Category = new Category("Terror")
+                Autor = "José de Deus",
+                Titulo = "Vai com Jeová",
+                Categoria = new Categoria("Terror")
             };
 
-            var livro2 = livro1.ShallowCopy();
+            var livro2 = (Livro)livro1.Clone();
 
-            Console.WriteLine("Livro 1 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro1.Author, livro1.Title, livro1.Category.Name);
-            Console.WriteLine("Livro 2 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro2.Author, livro2.Title, livro2.Category.Name);
+            Console.WriteLine("Livro 1 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro1.Autor, livro1.Titulo, livro1.Categoria.Name);
+            Console.WriteLine("Livro 2 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro2.Autor, livro2.Titulo, livro2.Categoria.Name);
             Console.WriteLine("");
-
-            livro1.Author = "Junior";
-            livro1.Title = "Será que deu certo??";
-            livro1.Category.Name = "AutoAjuda";
-            Console.WriteLine("Livro 1 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro1.Author, livro1.Title, livro1.Category.Name);
-            Console.WriteLine("Livro 2 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro2.Author, livro2.Title, livro2.Category.Name);
+            Console.WriteLine("agora vamos alterar o Livro 1");
+            Console.Write("Nome do Autor:");
+            livro1.Autor = Console.ReadLine();
+            Console.Write("Titulo da obra:");
+            livro1.Titulo = Console.ReadLine();
+            Console.Write("Categoria:");
+            livro1.Categoria.Name = Console.ReadLine();
             Console.WriteLine("");
-
-            var livro3 = livro1.DeepCopy();
-
-            livro1.Author = "Otávio";
-            livro1.Title = "Será que deu certo 2??";
-            livro1.Category.Name = "SelfHeal";
-            Console.WriteLine("Livro 1 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro1.Author, livro1.Title, livro1.Category.Name);
-            Console.WriteLine("Livro 3 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro3.Author, livro3.Title, livro3.Category.Name);
+            Console.WriteLine("Livro 1 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro1.Autor, livro1.Titulo, livro1.Categoria.Name);
+            Console.WriteLine("Livro 2 - Autor:{0}, Titulo:{1}, Categoria:{2}", livro2.Autor, livro2.Titulo, livro2.Categoria.Name);
+            Console.WriteLine("");
             Console.ReadKey();
         }
     }
@@ -40,6 +36,7 @@ namespace DeveloperTi.ExemploICloneable
     {
         public string Autor { get; set; }
         public string Titulo { get; set; }
+        public Categoria Categoria { get; internal set; }
         public Livro() { }
         public Livro(Livro livro)
         {
@@ -48,34 +45,22 @@ namespace DeveloperTi.ExemploICloneable
         }
         public object Clone()
         {
-            return new Livro(this);
+            var obj = new Livro(this);
+            obj.Categoria = (Categoria)this.Categoria.Clone();
+            return obj;
         }
     }
-    public class Book
-    {
-        public string Author { get; set; }
-        public string Title { get; set; }
-        public Category Category { get; set; }
-
-        public Book ShallowCopy()
-        {
-            return (Book)this.MemberwiseClone();
-        }
-        public Book DeepCopy()
-        {
-            var book = (Book)this.MemberwiseClone();
-            book.Category = new Category(Category.Name);
-            book.Author = string.Copy(Author);
-            book.Title = string.Copy(Title);
-            return book;
-        }
-    }
-    public class Category
+    public class Categoria : ICloneable
     {
         public string Name { get; set; }
-        public Category(string name)
+        public Categoria(string name)
         {
             this.Name = name;
+        }
+
+        public object Clone()
+        {
+            return new Categoria(string.Copy(Name));
         }
     }
 }
